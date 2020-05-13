@@ -13,32 +13,32 @@
 $gameinfos = array( 
 
 // Name of the game in English (will serve as the basis for translation) 
-'game_name' => "My Great Game",
+'game_name' => "Hearts",
 
 // Game designer (or game designers, separated by commas)
-'designer' => 'John Doe',       
+'designer' => 'Rohit Nambiar',       
 
 // Game artist (or game artists, separated by commas)
-'artist' => 'Jane Doe',         
+'artist' => 'Rohit Nambiar',         
 
 // Year of FIRST publication of this game. Can be negative.
-'year' => 2000,                 
+'year' => 1850,                 
 
 // Game publisher
-'publisher' => 'My Publishing Company',                     
+'publisher' => 'Public Domain',                     
 
 // Url of game publisher website
 'publisher_website' => 'http://www.mypublishingcompany.com/',   
 
 // Board Game Geek ID of the publisher
-'publisher_bgg_id' => 1234,
+'publisher_bgg_id' => 171,
 
 // Board game geek ID of the game
-'bgg_id' => 1850,
+'bgg_id' => 6887,
 
 
 // Players configuration that can be played (ex: 2 to 4 players)
-'players' => array( 2,3,4 ),    
+'players' => array( 4 ),    
 
 // Suggest players to play with this number of players. Must be null if there is no such advice, or if there is only one possible player configuration.
 'suggest_player_number' => null,
