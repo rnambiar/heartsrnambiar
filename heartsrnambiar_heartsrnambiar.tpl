@@ -27,7 +27,7 @@
 
 <div id="playertables">
 
-    <!-- BEGIN Player -->
+    <!-- BEGIN player -->
     <div class="playertable whiteblock playertable_{DIR}">
         <div class="playertablename" style="color:#{PLAYER_COLOR}">
             {PLAYER_NAME}

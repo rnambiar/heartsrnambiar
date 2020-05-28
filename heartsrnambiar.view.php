@@ -43,9 +43,8 @@
 
         $directions = array( 'S', 'W', 'N', 'E' );
 
-        
         $this->page->begin_block($template, "player");
-        foreach ( $players as $player_id=> $info ) {
+        foreach ( $players as $player_id => $info ) {
           $dir = array_shift($directions);
           $this->page->insert_block("player", array ("PLAYER_ID" => $player_id,
                   "PLAYER_NAME" => $players [$player_id] ['player_name'],
