@@ -33,13 +33,13 @@ class heartsrnambiar extends Table
         parent::__construct();
         
         self::initGameStateLabels( array( 
-            //    "my_first_global_variable" => 10,
-            //    "my_second_global_variable" => 11,
-            //      ...
-            //    "my_first_game_variant" => 100,
-            //    "my_second_game_variant" => 101,
-            //      ...
-        ) );        
+            "currentHandType" => 10, 
+            "trickColor" => 11, 
+             "alreadyPlayedHearts" => 12,
+        ) );
+        
+        $this->cards = self::getNew( "module.common.deck" );
+        $this->cards->init( "card" );
 	}
 	
     protected function getGameName( )
@@ -80,15 +80,30 @@ class heartsrnambiar extends Table
         /************ Start the game initialization *****/
 
         // Init global values with their initial values
-        //self::setGameStateInitialValue( 'my_first_global_variable', 0 );
-        
-        // Init game statistics
-        // (note: statistics used in this file must be defined in your stats.inc.php file)
-        //self::initStat( 'table', 'table_teststat1', 0 );    // Init a table statistics
-        //self::initStat( 'player', 'player_teststat1', 0 );  // Init a player statistics (for all players)
 
-        // TODO: setup the initial game situation here
+        // Note: hand types: 0 = give 3 cards to player on the left
+        //                   1 = give 3 cards to player on the right
+        //                   2 = give 3 cards to player opposite
+        //                   3 = keep cards
+        self::setGameStateInitialValue( 'currentHandType', 0 );
+        
+        // Set current trick color to zero (= no trick color)
+        self::setGameStateInitialValue( 'trickColor', 0 );
+        
+        // Mark if we already played hearts during this hand
+        self::setGameStateInitialValue( 'alreadyPlayedHearts', 0 );
        
+        // Create cards
+        $cards = array ();
+        foreach ( $this->colors as $color_id => $color ) {
+            // spade, heart, diamond, club
+            for ($value = 2; $value <= 14; $value ++) {
+                //  2, 3, 4, ... K, A
+                $cards [] = array ('type' => $color_id,'type_arg' => $value,'nbr' => 1 );
+            }
+        }
+        
+        $this->cards->createCards( $cards, 'deck' );
 
         // Activate first player (which is in general a good idea :) )
         $this->activeNextPlayer();
